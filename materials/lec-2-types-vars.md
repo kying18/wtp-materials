@@ -2,7 +2,7 @@
 
 # Sources
 
-These notes were adapted or copied verbatin from from [Adam Hartz](https://hz.mit.edu/)'s MIT [6.145 readings](https://hz.mit.edu/catsoop/6.145/), as well as [Think Python 2e](https://greenteapress.com/wp/think-python-2e/) by [Allen Downey](http://www.allendowney.com/wp/).
+These notes were adapted or copied verbatim from from [Adam Hartz](https://hz.mit.edu/)'s MIT [6.145 readings](https://hz.mit.edu/catsoop/6.145/), as well as [Think Python 2e](https://greenteapress.com/wp/think-python-2e/) by [Allen Downey](http://www.allendowney.com/wp/).
 
 # Python shell, IDEs, and terminal
 
@@ -128,6 +128,21 @@ The `*` operator allows us to repeat a string "multiplied" by an integer. For ex
 2. What about `7.+8`? How is this result different from the one above?
 3. What would happen if we tried `7+"8"`?
 4. What about `"7"+"8"`?
+
+# Converting Between Types
+
+Just a note, we can convert between types of numbers and strings.
+
+```
+int(7.8)  # 7
+float(6)  # 6.0
+str(6.0)  # "6.0"
+int("2")  # 2
+float("7.8")  # 7.8
+int("tomato")  # error
+int("7.8")  # error
+float("6")  # 6.0
+```
 
 # Boolean Expressions
 
@@ -258,3 +273,9 @@ When we have bugs in our code, usually we get an error message that tells us exa
 Now, let's say we don't have any errors but we know our code is failing because we aren't getting the result that we want. Let's say we have a fire alarm going off, but no smart-house, so we aren't sure where it's coming from. We might check all the rooms in the house to see what's going on in there! Similarly, we might want to see if our code at various steps is returning the result that we want it to. We can take a look at what's going on by using a debugger (which is what you probably should officially use)... or... by using a bunch of `print` statements (which is what most Python programmers actually do).
 
 We will grow to love/hate debugging as we start writing code!
+
+There are three kinds of errors that occur in a program:
+
+1. **Syntax error**: “Syntax” refers to the structure of a program and the rules about that structure. For example, parentheses have to come in matching pairs, so `(1 + 2)` is legal, but `8)` is a syntax error. If there is a syntax error anywhere in your program, Python displays an error message and quits, and you will not be able to run the program. During the first few weeks of your programming career, you might spend a lot of time tracking down syntax errors. As you gain experience, you will make fewer errors and find them faster.
+2. **Runtime error**: The second type of error is a runtime error, so called because the error does not appear until after the program has started running. These errors are also called exceptions because they usually indicate that something exceptional (and bad) has happened. Runtime errors are rare in the simple programs you will see in the first few chapters, so it might be a while before you encounter one.
+3. **Semantic error**: The third type of error is “semantic”, which means related to meaning. If there is a semantic error in your program, it will run without generating error messages, but it will not do the right thing. It will do something else. Specifically, it will do what you told it to do. Identifying semantic errors can be tricky because it requires you to work backward by looking at the output of the program and trying to figure out what it is doing.
