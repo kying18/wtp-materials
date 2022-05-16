@@ -51,7 +51,7 @@ In Python, these primitive types are associated with a **value**, which is the e
 
 (Note: if you know particle physics, you know that protons and neutrons can be further broken down, but not everyone takes particle physics, so let's pretend for now that they are the building blocks of matter in the universe)
 
-Let's discuss these primitive types (adapted from Adam Hartz's 6.145 notes):
+Let's discuss these primitive types:
 
 1. `int` is a type used to represent integers. You've already experienced two integers in the example above: `2` and `3`. Integers in Python are written the way we normally write integers on the page, with one exception: commas cannot be used (we'll find out more later). So, for example, the following are integers: 2, 3, 0, -12, 10000.
 
@@ -84,6 +84,90 @@ It's a tradition in the programming word to print `"Hello World"` as your first 
 
 # Algebraic Expressions
 
+We can combine the basic types using **operators**. Previously, we've already seen the `+` operator. Let's explore some other mathematical operators we can use:
+
+- `+` denotes addition
+- `-` denotes subtraction
+- `*` denotes multiplication
+- `/` denotes division
+- `i**j` denotes exponentiation
+
+## Order of Operations
+
+If you've learned about order of operations, PEMDAS, it still holds in programming. In case not, we'll briefly cover the ordering here:
+
+- Parentheses have the highest precedence and are evaluated first
+- Exponentiation is next
+- Multiplication and Division follow exponentiation
+- Addition and Subtraction come last
+
+For example, an expression like `5+(2*(4-1)+4**3)` would folloow the following order:
+
+1. We evaluate what is inside the parentheses first: `2*(4-1)+4**3`.
+2. We must also apply PEMDAS here as well. Evaluating the parentheses, we get: `2*3+4**3`.
+3. Now, evaluating the exponent, we get: `2*3+64`.
+4. Evaluating the multiplication, we get: `6+64`.
+5. Finally, we perform the addition here, and get `70` for the final value of the parentheses.
+6. For the value of the whole expression, we get `5+70`, which gives us then `75`.
+
+## Strings
+
+We cannot perform mathematical operations on strings, even if they look like numbers. For example `"stringa"-"stringb"`, `"100"/"20"` and `"4"*"2"` are not valid expressions. However, there are two exceptions: `+` and `*`.
+
+The `+` operator allows us to join strings together. This is known as **string concatenation**. For example, `"Hello " + "World"` would give us `"Hello World"` (note that there is a space at the end of the first string... if it were just `"Hello"+"World"`, we would get `"HelloWorld"`)
+
+The `*` operator allows us to repeat a string "multiplied" by an integer. For example, `"example"*3` would produce `"exampleexampleexample"`. We can treat `"example"*3` as `"example"+"example"+"example"`, but with less to type out, which will be a recurring theme in computer science. Usually, the less to type, the less code there is to contain a mistake!
+
+### Concept Questions
+
+1. What would `7+8` produce?
+2. What about `7.+8`? How is this result different from the one above?
+3. What would happen if we tried `7+"8"`?
+4. What about `"7"+"8"`?
+
 # Boolean Expressions
 
+A Boolean expression resolved to either true or false. In Python, this is an object of type `bool`, and the value is either `True` or `False`. For example. `5 == 5` returns `True`, but `5 == 6` returns `False`.
+
+As we might guess, the `==` is an operator that determines whether or not two values are equal to one another, and results in a boolean value.
+
+The `==` operator is a relational operator, which operates on arbitrary values and produce bool objects. Other relational operators include:
+
+- `==` ("is equal to") compares two operands and produces `True` if they are equal, and `False` otherwise.
+- `!=` ("is not equal to") compares two operands and produces `True` if they are not equal, and `False` otherwise.
+- `>` ("is greater than") compares two operands and produces `True` if the first is greater than the second, and `False` otherwise.
+- `<` ("is less than") compares two operands and produces `True` if the first is less than the second, and `False` otherwise.
+- `>=` ("is greater than or equal to") compares two operands and produces `True` if the first is greater than or equal to the second, and `False` otherwise.
+- `<=` ("is less than or equal to") compares two operands and produces `True` if the first is less than or equal to the second, and `False` otherwise.
+
+There are also three operators that only operate on Boolean values:
+
+- `and` produces `True` if both of its operands are `True`, and produces `False` otherwise (for example, `True and True` produces `True`; but `False and True` produces `False`).
+- `or` produces `True` if at least one of its operands is `True`, and produces `False` otherwise (for example, `True or True` produces `True`; and `True or False` also produces `True`; but `False or False` produces `False`).
+- `not` is a unary operator (it has only one operand) that produces `True` if its operand is `False`, and `False` if its operand is `True` (for example, `not False` produces `True`; and `not True` produces `False`.
+
+Sounds pretty straightforward right? When will we ever need to know if `False or False` is `False`? That doesn't sound like it's very useful... However, in future chapters, we will see that there are more complex expressions that reduce to `True` and `False`, and the computer will rely on those expressions to decide how to proceed!
+
 # Variables and Assignment
+
+Up to now, we've only really looked at expressions. However, sometimes it's useful to **assign** a name to a value. We do this using **variables**.
+
+Let's use an example:
+
+```
+x = 2 + 2
+```
+
+Here, we are assigning the result of `2+2` to the value `x`. So, if we ask the console what `x` is, we see that the result is `4`.
+
+Let's try to explain this with some algebra. Ok so if we say `x = 2+2`, then we are basically setting the variable `x` as `4`. Now, if we type in `x+5`, we replace the name with the value, and this is the same as `4+5`, which returns `9`. We can even use another assignment operator with a different variable, `y = x+5`, and now, we have a variable `x` that equals `5` and a variable `y` that equals `9`.
+
+Note, the `=` and `==` might seem similar, but the former is an operator that assigns a value to a variable, and the latter is an operator that checks whether two values are equal.
+
+### Concept questions
+
+1. What if we had set `x = x+5`? Do you think this is allowed? If so, what would `x` be equal to?
+
+# Sources
+
+These notes were adapted or copied verbatin from from [Adam Hartz](https://hz.mit.edu/)'s MIT [6.145 readings](https://hz.mit.edu/catsoop/6.145/), as well as [Think Python 2e](https://greenteapress.com/wp/think-python-2e/) by [Allen Downey](http://www.allendowney.com/wp/).
