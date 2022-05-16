@@ -1,17 +1,21 @@
-# Lecture 2: Python Basics
+# Lecture 2: Python Basics, Types, Variables
 
-## Python shell, IDEs, and terminal
+# Sources
+
+These notes were adapted or copied verbatin from from [Adam Hartz](https://hz.mit.edu/)'s MIT [6.145 readings](https://hz.mit.edu/catsoop/6.145/), as well as [Think Python 2e](https://greenteapress.com/wp/think-python-2e/) by [Allen Downey](http://www.allendowney.com/wp/).
+
+# Python shell, IDEs, and terminal
 
 One of the first things that you will encounter when you start programming is a bunch of different places to type your code. Let's start from here and clarify what is what.
 
-### Python Shell
+## Python Shell
 
 You may see something like this:
 ![shell](../images/shell-command.png)
 
 This is what we call a **Python shell**. In other words, each line, we can type a Python command and when we click `Enter`, the result of that command pops up (as shown above). Think of a shell as a chat, where you interact with some software.
 
-### IDE
+## IDE
 
 This is great for certain things like testing the output of a command, but usually a little too lightweight for what we want to do. For example, let's pretend our computer is a robot that listens to every single command we say (very literally). If we want the robot to do our homework, we need to give it specific commands such as:
 
@@ -29,14 +33,14 @@ In this case, it would be easier to list each step and hand it to the robot to r
 In order to write the script, we need a place to edit the file, highlight errors, and so on. This is like using Microsoft Word or Google Docs to write an essay. In the programming word, we call this software an **IDE**, or **integrated development environment**. Sometimes, people also refer to this as a **text editor**. In this class we are using Visual Studio Code (or VSCode). It's my personal favorite, but different people have different opinions. Some like Atom, Pycharm, Repl.it, and so on. An IDE looks something like this:
 ![VSCode](../images/vscode.png)
 
-### Terminal
+## Terminal
 
 Finally, the last (relevant) little box that we type things into looks something like this:
 ![terminal](../images/terminal.png)
 
 This is called a **terminal**, **command prompt**, **command line**, or **console**. It's an interface with the computer's operating system via a **shell** (note that a _Python shell_ allows us to interact with Python via a shell). Instead of telling Python to compute a command like `3+5`, it asks the computer to change directories (or folders), to display files and folders within a directory, to run a script, or to search for a word in a bunch of files.
 
-### Concept Questions
+## Concept Questions
 
 1. What is the difference between a Python shell and terminal?
 2. What is the difference between a Python shell and an IDE?
@@ -118,7 +122,7 @@ The `+` operator allows us to join strings together. This is known as **string c
 
 The `*` operator allows us to repeat a string "multiplied" by an integer. For example, `"example"*3` would produce `"exampleexampleexample"`. We can treat `"example"*3` as `"example"+"example"+"example"`, but with less to type out, which will be a recurring theme in computer science. Usually, the less to type, the less code there is to contain a mistake!
 
-### Concept Questions
+## Concept Questions
 
 1. What would `7+8` produce?
 2. What about `7.+8`? How is this result different from the one above?
@@ -164,10 +168,93 @@ Let's try to explain this with some algebra. Ok so if we say `x = 2+2`, then we 
 
 Note, the `=` and `==` might seem similar, but the former is an operator that assigns a value to a variable, and the latter is an operator that checks whether two values are equal.
 
-### Concept questions
+## Concept questions
 
 1. What if we had set `x = x+5`? Do you think this is allowed? If so, what would `x` be equal to?
 
-# Sources
+# Variable Names
 
-These notes were adapted or copied verbatin from from [Adam Hartz](https://hz.mit.edu/)'s MIT [6.145 readings](https://hz.mit.edu/catsoop/6.145/), as well as [Think Python 2e](https://greenteapress.com/wp/think-python-2e/) by [Allen Downey](http://www.allendowney.com/wp/).
+In our example above, we could have replace `x` with some other name, such as `a` or `number` or `elephant`. Usually, we want to choose variable names that are somewhat descriptive, but short enough to type.
+
+For example, can anyone tell me what this code is trying to do:
+
+```
+a = 6.28318
+b = 2
+
+c = a * b
+d = 1 / 2 * a * b ** 2
+
+e = 4 * d
+f = 2 / 3 * a * b ** 3
+```
+
+In contrast, let's use some more descriptive variable names:
+
+```
+tau = 6.28318
+radius = 2
+
+circle_circumference = tau * radius
+circle_area = 1 / 2 * tau * radius ** 2
+
+sphere_surface_area = 4 * circle_area
+sphere_volume = 2 / 3 * tau * radius ** 3
+```
+
+That makes the code a lot easier to understand right? It is possible to go a little too far, and then the variables are just annoying to type out:
+
+```
+the_ratio_between_the_circumference_and_the_radius_of_a_circle = 6.28318
+the_radius_of_the_shapes_for_which_we_want_to_compute_values = 2
+```
+
+## Rules for variable names:
+
+- Variable names must begin with an alphabetical character or the underscore character
+- Variable names cannot being with a number
+- Variable names must be comprised of alphanumeric characters and underscores (`A-Z`, `a-z`, `0-9`, and `_`). This means no special characters such as `*`, `!`, and so on!
+- Variable names are case-sensitive. This means that `wtp`, `WTP`, and `Wtp` are all different variables
+
+## Examples of variable names:
+
+```
+# valid variable names
+my_wtp_variable = "hello"
+mywtpvariable = "hello"
+myWtpVariable = "hello"
+_my_wtp_variable = "hello"
+WTPVAR = "hello"
+wtpvar12345 = "hello"
+
+# non-valid variable names
+123var = "hello"
+wtp-variable = "hello"
+my wtp variable = "hello"
+```
+
+# Comments
+
+We can add comments to our code to help ourselves/others understand the code better. These do not do anything functional to our code, but they allow us to, well, add comments! In Python, comments are denoted by a `#` symbol. For example, we can write this:
+
+```
+x = 2 + 2  # sets x to 4
+```
+
+The comment is just for the reader to know that that line is setting `x` to `4`, but the actual function of the code does not change.
+
+# Debugging
+
+We're human. We usually make mistakes. When things don't go the way we want them to, we call these **bugs** in our code. The process of fixing these bugs is known as **debugging**. Sometimes, 10% of your time programming is actually coding and the other 90% is trying to hunt down mysterious bugs. :')
+
+Debugging is usually not an easy task. However, there are a few tools to help you!
+
+First, how do you know there's a bug? Usually, the most common way is that the script throws an error, or you do not get the output that you want! When you get an error, usually that is good, and we can use it to see where we made a mistake.
+
+For example, let's say the fire alarm in your house is going off. This is the equivalent of your code showing an error message. Now, let's say you had a smart-house that told you, "There is smoke coming from the kitchen on the first floor." Naturally, you (or the firemen) would check the kitchen on the first floor, right?
+
+When we have bugs in our code, usually we get an error message that tells us exactly what is going on. That will be the first place to start the debugging hunt.
+
+Now, let's say we don't have any errors but we know our code is failing because we aren't getting the result that we want. Let's say we have a fire alarm going off, but no smart-house, so we aren't sure where it's coming from. We might check all the rooms in the house to see what's going on in there! Similarly, we might want to see if our code at various steps is returning the result that we want it to. We can take a look at what's going on by using a debugger (which is what you probably should officially use)... or... by using a bunch of `print` statements (which is what most Python programmers actually do).
+
+We will grow to love/hate debugging as we start writing code!
