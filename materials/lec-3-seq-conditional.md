@@ -1,4 +1,4 @@
-# Lecture 3: Compound Objects and Conditionals
+# Lecture 3: Conditionals and More Types
 
 # Sources
 
@@ -164,10 +164,6 @@ else:
         else:
             print("x is a large positive number")
 ```
-
-# Sequences
-
-Strings are actually sequences of characters. In Python, some may consider strings a primitive, and some may consider it of **compound** type (since it is comprised of characters). We can do many interesting operations in Python with sequences, but we'll start with strings, and then generalize.
 
 # Sequences
 
