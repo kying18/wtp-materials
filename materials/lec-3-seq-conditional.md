@@ -233,3 +233,135 @@ numbers = [42, 123]
 another_list = [7, 12, 10]
 empty = []  # we can also make a list that contains no elements!
 ```
+
+### Mutability
+
+What exactly do we mean when we say that lists are _mutable_, but tuples aren't?
+
+We can _modify_ lists, such as replacing an item or adding/removing items from the list, but these methods will throw an error if we try to apply them to tuples. For example:
+
+```
+my_tuple = (1, 2, 3)
+my_list = [1, 2, 3]
+
+# modifying an element
+my_tuple[0] = 5  # this will give us a TypeError
+my_list[0] = 5
+print(my_list)  # [5, 2, 3]
+
+# appending elements
+my_tuple.append(4)  # error
+my_list.append(4)
+print(my_list)  # [5, 2, 3, 4]
+
+# we can append other things too
+my_list.append("sky")  # [5, 2, 3, 4, "sky"]
+my_list.append(my_tuple)  # [5, 2, 3, 4, "sky", (1, 2, 3)]
+
+# pop removes, extend adds another list to the end
+my_list.pop()  # [5, 2, 3, 4, "sky"]
+my_list.extend([1, 2, 3])  # [5, 2, 3, 4, "sky", 1, 2, 3]
+```
+
+## Dictionaries
+
+**Dictionaries** are also great. They provide a **mapping** between keys and values. Think about the English to French dictionary. Each English word gets mapped to its French counterpart, and in order to find the French word, we look up the English word. In Python, in some ways, the English word is the "key" and the corresponding French word (what the English word maps to) is the value.
+
+These mappings are known as **key-value pairs**, and sometimes refered to as **items**.
+
+Let's look at some examples to see how dictionaries work.
+
+```
+eng_to_fr = {}  # this is an empty dictionary
+eng_to_fr["hello"] = "bonjour"  # this inserts a new key-value pair into the dictionary
+print(eng_to_french)  # {"hello": "bonjour"}
+
+# we can retreive the french word by looking up the english word
+print(eng_to_french["hello"])  # "bonjour"
+
+# note that we can also create a new dictionary like this:
+eng_to_fr = {"hello": "bonjour", "goodbye": "au revoir"}
+
+# note that it only works if we look up the keys
+# if we look up the value, we get an error! (unless the value is equal to another key)
+print(eng_to_french["goodbye"])  # "au revoir"
+print(eng_to_french["bonjour"])  # error
+```
+
+Keys in the dictionary must be unique, meaning we cannot set `"hello"` to both `"bonjour"` and `"salut"`. Instead, the key will be overriden by the latest value:
+
+```
+print(eng_to_fr)  # {"hello": "bonjour", "goodbye": "au revoir"}
+eng_to_fr["hello"] = "salut"
+print(eng_to_fr["hello"])  # salut
+```
+
+Dictionaries can have arbitrary objects as values and arbitrary _immutable_ objects as keys. (Can you think of a reason why that might be?) Basically, anything can be a value, but lists and dictionaries (generally speaking) cannot be keys.
+
+Let's see what happens if we use a list vs a tuple:
+
+```
+x = [1, 2, 3]
+y = (1, 2, 3)
+dictionary = {}
+
+dictionary[x] = 2  # TypeError: unhashable type: 'list'
+dictionary[y] = 2
+print(dictionary)  # {(1, 2, 3): 2}
+```
+
+Note that dictionaries do not have any ordering. `dictionary[0]` will return an error unless `0` is a key in the dictionary.
+
+## Sets
+
+Finally, the last built-in object type we will talk about is a **set**. Sets are like lists, but they do not have any ordering and they do not contain any repeated values. Similar to dictionaries, they are denoted with curly brackets, but do not have any key-value pairs.
+
+Let's look at an example:
+
+```
+my_set = set()  # usually, I use this to define a set, because my_set = {} would be a dictionary!
+my_set.add(1)
+my_set.add(2)
+print(my_set)  # {1, 2}
+
+# what happens if we add another 1 to the set?
+my_set.add(1)
+print(my_set)  # {1, 2}
+```
+
+Remember that sets cannot have repeated values! If we try to add a value already in the set, there is no error, but the values in the set do not change.
+
+# Compound Object Operators
+
+There are a few operators that we can use for sequences:
+
+- length: we can call `len(obj)`, where `obj` is a tuple, list, dictionary, or set, and this will return the number of items in the object
+
+```
+print(len([1, 2, 3, 4]))  # returns 4
+```
+
+- presence of item: we can use the `in` operator to see if a value is in a tuple, list, set, or dictionary (as a _key_)
+
+```
+print('a' in [1, 2, 3])  # False
+print('a' in [1, 'a', 3])  # True
+```
+
+- lack of presence: similarly to `in`, we can use the `not in` operator to see if a value is not in a tuple, list, set, or dictionary's keys
+
+```
+print('a' not in [1, 2, 3])  # True
+print('a' not in [1, 'a', 3])  # False
+```
+
+# When To Use What??
+
+When should we use what? It seems like all these built-in types are somewhat similar. The logic is not as straightforward as numbers vs strings vs booleans. Can you think of some use cases for each?
+
+From my experience, here's some examples of use cases:
+
+- Tuples: when I want to store values that are tied together, such as x-y coordinates or playing card representations (ex: `(3, 'spades')`)
+- Lists: when I want a list of things. For example, if I am trying to implement poker, I might store a deck of playing cards as a list of tuples (ex: `[(2, 'spades'), (2, 'diamonds'), (3, 'spades'), ...]`)
+- Dictionaries: when I want to associate something with a label or create any type of mapping. Also good for creating counters. For example, if I am counting occurrence of words in a sentence (`{'the': 5, 'and': 2, 'seashore': 1, 'dolphin': 1, etc.}`) or mapping stock tickers to company names (`{'TSLA': 'Tesla', 'AAPL': 'Apple', 'GOOGL': 'Alphabet', 'FB': 'Meta', etc.}`)
+- Sets: when I want to keep track of values I've already encountered, or when I want to see how many unique values are in something
