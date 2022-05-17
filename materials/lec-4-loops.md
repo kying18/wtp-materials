@@ -1,4 +1,4 @@
-# Lecture 3: Conditionals and More Types
+# Lecture 4: Loops
 
 # Sources
 
