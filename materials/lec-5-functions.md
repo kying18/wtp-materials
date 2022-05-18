@@ -192,3 +192,96 @@ print(bar(5))
 This is because of scoping again! When we define `bar` in the local scope of the `foo` function, it only exists there! We cannot access the function in the global frame.
 
 While you may think that this is silly now, this eventually becomes a super helpful tool while building big software projects because sometimes we don't want someone to have access to all the functions!
+
+# Functions Are Objects
+
+We've seen how we can call functions by using parentheses. What if we did not have those? What would happen?
+
+```
+circle_area
+```
+
+The result looks something like this:
+
+```
+<function circle_area at 0x100c04550>
+```
+
+This is telling us that it's actually a function _object_ named `circle_area` located at some place in memory, `0x100c04550` (we won't worry about that last part in this class). However, this means that we can actually pass the `circle_area` function around as arguments to other function, we can return it from other functions, and assign it to variables!
+
+Basically, if I wanted to assign a variable to the function `circle_area`, I could do so like this:
+
+```
+my_function = circle_area
+
+# now let's try calling it
+print("Output using my_function", my_function(2))
+print("Output using circle_area", circle_area(2))
+```
+
+Both give the same result!
+
+We also mentioned we could pass it into functions. Let's look at an example to see why this is useful:
+
+```
+# let's say point1 and point2 are (x, y) coordinates, represented by tuples
+def dist(point1, point2):
+    x1 = point1[0]
+    y1 = point1[1]
+    x2 = point2[0]
+    y2 = point2[1]
+    return ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5
+```
+
+Ok great, we can get the _Euclidean distance_ between two points:
+
+```
+print(dist((-1, 5), (3, 2)))  # 5.0
+```
+
+However, let's say we're walking in the streets of NYC and we want to figure out how much we need to walk to get from `point1` to `point2`. Well, unfortunately we need to stay on the sidewalk, otherwise we might run into some buildings. The Euclidean distance is not really helpful. Instead, we should use a metric called the _Manhattan distance_ (see diagram), which represents the sum of the absolute difference between points in all dimensions.
+
+That means we'd want our distance function to look something like this:
+
+```
+def dist(point1, point2):
+    x1 = point1[0]
+    y1 = point1[1]
+    x2 = point2[0]
+    y2 = point2[1]
+    return abs(x2 - x1) + abs(y2 - y1)
+
+print(dist((-1, 5), (3, 2)))  # 7
+
+```
+
+The two functions seem really similar right, only the bottom part changing a bit? We can actually instead create a single distance function and pass in the calculation definition as an argument. Let's see how that works:
+
+```
+def dist(point1, point2, dist_fxn):
+    x1 = point1[0]
+    y1 = point1[1]
+    x2 = point2[0]
+    y2 = point2[1]
+    return dist_fxn(x1, y1, x2, y2)
+```
+
+Now, if we define our two distances,
+
+```
+def calc_euclidean_dist(x1, y1, x2, y2):
+    return ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5
+
+def calc_manhattan_dist(x1, y1, x2, y2):
+    return abs(x2 - x1) + abs(y2 - y1)
+```
+
+we can actually pass these into our original distance function during that function call!
+
+```
+distance_euc = dist((-1, 5), (3, 2), calc_euclidean_dist)  # 5.0
+distance_man = dist((-1, 5), (3, 2), calc_manhattan_dist)  # 5.0
+
+print(distance_euc)  # 5.0
+print(distance_man)  # 7
+```
