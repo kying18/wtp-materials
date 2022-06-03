@@ -37,4 +37,5 @@ def calculate_next(s, i, r):
     R = r
     return (s_next, i_next, r_next)
 
-run_simulation()
+if __name__ == "__main__":
+    run_simulation()
