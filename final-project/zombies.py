@@ -1,29 +1,50 @@
 import random
 BETA = 2 #number of students infected by each per day
+sus_range = (1, 1) #tuple of low and high bounds for susceptibility
 
 class person(object):
-    def __init__(self, sus, state):
-        self.sus = sus
+    def __init__(self, state):
+        '''
+        Initial constructor of a person. Holds their susceptibility (float, range 0:1), and state.
+        'I' = infected (aka zombie)
+        'S' = susceptible (human)
+        'R' = recovered + immune (cured and incapable of becoming a zombie again)
+        '''
+        self.sus = random.uniform(*sus_range)
         self.state = state
 
     def interact(self):
         '''
-        returns a boolean based on whether or not an interaction with an infected student results in an infection, also changes state
+        returns a boolean based on whether or not an interaction with an infected student results in an infection
         '''
+        strength = random.random()
+        print('strength =', strength)
+        if self.sus < strength:
+            return False
         return True
 
     def get_state(self):
+        '''
+        Returns the state, either 'I', 'S', or 'R'
+        :return:
+        '''
         return self.state
 
     def set_state(self, state):
+        '''
+        Sets the state given 'I', 'S', or 'R'
+        '''
         self.state = state
 
 class school(object):
-    def __init__(self, num_students):
+    def __init__(self, num_students, initial_spread):
+        '''
+        Constructs a school given a number of students and the initial probability of infection.
+        '''
         self.list_students = []
         for student in range(num_students):
-            rand_disease = random.choices(['S', 'I'], weights=[90, 10])[0]
-            self.list_students.append(person(1, rand_disease))
+            rand_disease = random.choices(['S', 'I'], weights=[1-initial_spread, initial_spread])[0]
+            self.list_students.append(person(rand_disease))
         self.school_size = num_students
 
     def infect_round(self):
@@ -66,7 +87,7 @@ class school(object):
             print('Student', student.get_state())
 
 if __name__ == "__main__":
-    school = school(75)
+    school = school(75, 0.05)
     start = input('Welcome, school administrator. Your school has been infected with a zombie virus. Type \'YES\' to start the simulation.')
     if start:
         print(school)
