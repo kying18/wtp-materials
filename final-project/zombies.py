@@ -17,7 +17,6 @@ class person(object):
         returns a boolean based on whether or not an interaction with an infected student results in an infection
         '''
         strength = random.random()
-        print('strength =', strength)
         if self.sus < strength:
             return False
         return True
