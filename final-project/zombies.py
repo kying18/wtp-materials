@@ -45,6 +45,7 @@ class school(object):
             rand_disease = random.choices(['S', 'I'], weights=[1-initial_spread, initial_spread])[0]
             self.list_students.append(person(rand_disease))
         self.school_size = num_students
+        print(self.BETA)
 
     def infect_round(self):
         '''
@@ -55,7 +56,7 @@ class school(object):
             if student.get_state() == 'I':
                 infected_students.append(student)
         for _ in infected_students:
-            for i in range(school.BETA):
+            for i in range(self.BETA):
                 contact = random.randint(0, self.school_size-1)
                 infected = self.list_students[contact].interact()
                 if infected:
