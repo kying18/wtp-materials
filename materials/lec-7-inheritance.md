@@ -108,7 +108,3 @@ print(square.get_diagonal_length())
 ```
 
 Sweet!
-
-<!-- # Good Python Coding Practices
-
-Now you know the basics of computer programming in Python. You have the foundational tools to build scripts from the ground up! Just like learning a new language, concepts will make more sense as you practice more. However, let's briefly touch on good coding practices so we can -->

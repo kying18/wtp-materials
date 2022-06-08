@@ -361,3 +361,22 @@ From my experience, here's some examples of use cases:
 - Lists: when I want a list of things. For example, if I am trying to implement poker, I might store a deck of playing cards as a list of tuples (ex: `[(2, 'spades'), (2, 'diamonds'), (3, 'spades'), ...]`)
 - Dictionaries: when I want to associate something with a label or create any type of mapping. Also good for creating counters. For example, if I am counting occurrence of words in a sentence (`{'the': 5, 'and': 2, 'seashore': 1, 'dolphin': 1, etc.}`) or mapping stock tickers to company names (`{'TSLA': 'Tesla', 'AAPL': 'Apple', 'GOOGL': 'Alphabet', 'FB': 'Meta', etc.}`)
 - Sets: when I want to keep track of values I've already encountered, or when I want to see how many unique values are in something
+
+# Practice Questions
+
+```
+x = [1.1, 2, [3, 'tomato', 4], 'cat]
+```
+
+1. What type is `x`?
+2. What type is `x[0]`?
+3. What type is `x[2]`?
+4. What type is `x[-1]`?
+5. What is the value of `x[2][2]`?
+6. What is the value of `x[2][-1]`?
+7. What is the value of `x[-1][2]`?
+8. What is the value of `x[4]`?
+9. What is the value of `'hi' == Hi'`?
+10. What is the value of `[1, 2]+[3,4]*2`?
+11. What is the value of `['b'] + ['a' + 'n']*2 + ['a']`?
+12. What is the value of `"na"*8 + " batman"`?

@@ -286,3 +286,50 @@ for val1 in l:
 ```
 
 The `break` is indicating to Python that after finding a sum equal to the target, we want to discontinue running our program. We've already gotten the answer we're looking for!
+
+# Practice Questions
+
+1. What is the value that is printed?
+
+```
+u = 3
+v = 9
+w = 1
+for w in [2, 4, -1]:
+    v = v - u*w
+
+print([u, v, w]) # [3, -6, -1]
+```
+
+2. What is the value that is printed?
+
+```
+r = 1
+s = 6
+t = 2
+k = [None, False]
+l = [True, r, 'twenty-five', k, 1]
+
+while r < s:
+    r = r * t
+    l[r] = s
+    s = s - t
+
+print([r, s, t, k, l]) # [4, 2, 2, [None, False], [True, 1, 6, [None, False], 4]]
+```
+
+3. What is the value that is printed?
+
+```
+a = 1
+c = 'crumb'
+x = 7
+
+for x in [0, 2, 1]:
+    a = a + x
+    for y in 'r':
+        c = c[a] * x + c
+    c = c + y
+
+print([a, c, x]) # [4, 'ummcrumbrrr', 1]
+```
