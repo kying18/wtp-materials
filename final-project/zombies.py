@@ -9,19 +9,22 @@ class Person(object):
         'S' = susceptible (human)
         'R' = recovered + immune (cured and incapable of becoming a zombie again)
         '''
-        self.sus = random.uniform(*sus_range)
+        self.sus = random.uniform(*sus_range) #unpacking notation
+        #equivalent to = random.uniform(sus_range[0], sus_range[1])
         self.state = state
+        #this might seem silly but it's important so we bind that original state to each Student object
 
     def interact(self):
         '''
         returns a boolean based on whether or not an interaction with an infected student results in an infection
+        "R" = resistant and no infection will occur
         '''
         if self.get_state() == 'R':
             return False
-        strength = random.random()
-        if self.sus < strength:
-            return False
-        return True
+        strength = random.random() #random value of infection strength
+        if 1-self.sus < strength: #if student strength is less than virus strength, infected
+            return True
+        return False
 
     def get_state(self):
         '''
@@ -34,6 +37,7 @@ class Person(object):
         '''
         Sets the state given 'I', 'S', or 'R'
         '''
+        assert state in ['S', 'I', 'R'] #do we want to cover assert statements?
         self.state = state
 
 class School(object):
