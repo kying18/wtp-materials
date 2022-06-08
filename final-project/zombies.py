@@ -1,7 +1,7 @@
 import random
 sus_range = (1, 1) #tuple of low and high bounds for susceptibility
 
-class person(object):
+class Person(object):
     def __init__(self, state):
         '''
         Initial constructor of a person. Holds their susceptibility (float, range 0:1), and state.
@@ -16,6 +16,8 @@ class person(object):
         '''
         returns a boolean based on whether or not an interaction with an infected student results in an infection
         '''
+        if self.get_state() == 'R':
+            return False
         strength = random.random()
         if self.sus < strength:
             return False
@@ -34,7 +36,7 @@ class person(object):
         '''
         self.state = state
 
-class school(object):
+class School(object):
     def __init__(self, num_students, initial_spread, BETA=2):
         '''
         Constructs a school given a number of students and the initial probability of infection.
@@ -43,9 +45,8 @@ class school(object):
         self.list_students = []
         for student in range(num_students):
             rand_disease = random.choices(['S', 'I'], weights=[1-initial_spread, initial_spread])[0]
-            self.list_students.append(person(rand_disease))
+            self.list_students.append(Person(rand_disease))
         self.school_size = num_students
-        print(self.BETA)
 
     def infect_round(self):
         '''
@@ -72,6 +73,32 @@ class school(object):
                 count += 1
         return count
 
+    def can_continue(self):
+        if self.school_size == self.get_num_infected():
+            return False
+        robo_count = 0
+        for student in self.list_students:
+            if student.get_state() == 'R':
+                robo_count += 1
+                print(robo_count)
+                print('school size =', self.school_size)
+        if robo_count == self.school_size:
+            print('returning false')
+            return False
+        else:
+            return True
+
+    def cure_student(self):
+        random_list = self.list_students.copy()
+        random.shuffle(random_list)
+        if self.get_num_infected() == 0:
+            print('no student to cure')
+        else:
+            for student in random_list:
+                if student.get_state() == 'I':
+                    student.set_state('R')
+                    return None
+
 
 
 
@@ -81,7 +108,7 @@ class school(object):
         '''
         string = ''
         total_length = len(self.list_students)
-        repr_dict = {'S': 'o', 'I': 'z'} #shows o for students and z for zombies
+        repr_dict = {'S': 'o', 'I': 'z', 'R': 'R'} #shows o for students and z for zombies
         for ix in range(total_length):
             string += repr_dict[self.list_students[ix].get_state()] + ' ' #adds each student
             if (ix+1) % 15 == 0: #line breaks every 15 students
@@ -97,13 +124,15 @@ if __name__ == "__main__":
     '''
     Runs a school simulation of size 75 with an initial infection chance of 1/20
     '''
-    school = school(75, 0.05)
+    school = School(75, 0.05)
     start = input('Welcome, school administrator. Your school has been infected with a zombie virus. Type \'YES\' to start the simulation.')
     if start in ['YES', 'yes', 'Y', 'y']:
         print(school)
         num_rounds = 0
         while True:
             next = input('Press enter to start the next round')
+            if next == 'y':
+                school.cure_student()
             if next == '':
                 school.infect_round()
                 print('after infection')
