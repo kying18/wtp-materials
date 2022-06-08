@@ -63,7 +63,8 @@ class School(object):
                 infected_students.append(student)
         #for each infected student, have them interact with some random subset of students
         for _ in infected_students:
-            for i in range(self.beta):
+            for i in range(round(self.beta)): #in this code, beta can be a float
+                print('infecting student', i, 'for beta', self.beta)
                 contact = random.randint(0, self.school_size-1)
                 infected = self.list_students[contact].interact()
                 if infected:
@@ -94,6 +95,9 @@ class School(object):
         else:
             return True
 
+    ###
+    #METHODS TO LOWER INFECTION RATES
+    ###
     def cure_student(self):
         random_list = self.list_students.copy()
         random.shuffle(random_list)
@@ -104,7 +108,12 @@ class School(object):
                 if student.get_state() == 'I':
                     student.set_state('R')
                     return None
-
+    def lower_beta(self):
+        '''
+        Lowers the number of students each infected individual interacts with to 80% of current levels
+        :return:
+        '''
+        self.beta = self.beta*0.8
 
 
 
