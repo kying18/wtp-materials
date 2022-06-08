@@ -74,6 +74,32 @@ You might wonder why this type is not called "real" or "exact" or "decimal" (`fl
 - However, it is worth noting that this representation cannot exactly represent all real numbers. As such, we will sometimes need to keep in mind that float objects are approximations of the numbers we actually want.
 - To see an example of this behavior, try running 0.1 + 0.1 + 0.1. you'll see an unexpected result!
 
+# Basic Types Examples
+
+Primitives
+
+```
+True    # boolean
+2.99    # float
+None    # NoneType
+3       # int
+3.      # float
+0       # int
+```
+
+Combinations
+
+```
+3. + 1      # float
+25 - 16.    # float
+-5 - 15     # int
+32 > 335    # boolean
+94.2 == 35  # boolean
+4 == 4.     # boolean
+34 / 322    # float
+322 % 34    # int
+```
+
 # Print Statements
 
 Before we move on to doing fancy things with these values, I wanted to mention the `print` statement. In Python 3, we type in `print("something")` and this would print `something` to the console.
@@ -167,6 +193,26 @@ There are also three operators that only operate on Boolean values:
 
 Sounds pretty straightforward right? When will we ever need to know if `False or False` is `False`? That doesn't sound like it's very useful... However, in future chapters, we will see that there are more complex expressions that reduce to `True` and `False`, and the computer will rely on those expressions to decide how to proceed!
 
+# Expression Practice
+
+```
+5 + 3 - 16      # -8
+25 // 4         # 6
+8+4*2           # 16
+(8+4)*2         # 24
+3 ** 5          # 243
+3.0 ** 5        # 243.0
+3/2             # 1.5
+16.3 % 16       # 0.3
+
+True or False       # True
+True and False      # False
+3 > 4 or 3 == 3     # True
+not False           # True
+not (4 > 3 and 100 > 6)     # False
+4 == 2 + 2          # True
+```
+
 # Variables and Assignment
 
 Up to now, we've only really looked at expressions. However, sometimes it's useful to **assign** a name to a value. We do this using **variables**.
@@ -246,6 +292,36 @@ wtpvar12345 = "hello"
 123var = "hello"
 wtp-variable = "hello"
 my wtp variable = "hello"
+```
+
+# Variables Example
+
+```
+a = 7
+c = 9
+a = 4
+if a > 6:
+    b = 9
+else:
+    b = 10
+
+if a > 7:
+   d = 3
+if a > 3:
+   d = 2
+else:
+    d = 1
+```
+
+What are the values of `a`, `b`, `c`, and `d`?
+
+Answer:
+
+```
+a = 4
+b = 10
+c = 9
+d = 2
 ```
 
 # Comments
