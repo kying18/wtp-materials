@@ -41,14 +41,14 @@ class Person(object):
         self.state = state
 
 class School(object):
-    def __init__(self, num_students, initial_spread, BETA=2):
+    def __init__(self, num_students, initial_spread, beta=2): #discuss including variable name in header?
         '''
         Constructs a school given a number of students and the initial probability of infection.
         '''
-        self.BETA = BETA
+        self.beta = beta
         self.list_students = []
         for student in range(num_students):
-            rand_disease = random.choices(['S', 'I'], weights=[1-initial_spread, initial_spread])[0]
+            rand_disease = random.choices(['S', 'I'], weights=[1-initial_spread, initial_spread])[0] #weighted choices, unpacking list
             self.list_students.append(Person(rand_disease))
         self.school_size = num_students
 
@@ -56,12 +56,14 @@ class School(object):
         '''
         Simulates a day of student interactions, controlled by the sociality variable 'BETA"
         '''
+        #generate a list of infected students
         infected_students = []
         for student in self.list_students:
             if student.get_state() == 'I':
                 infected_students.append(student)
+        #for each infected student, have them interact with some random subset of students
         for _ in infected_students:
-            for i in range(self.BETA):
+            for i in range(self.beta):
                 contact = random.randint(0, self.school_size-1)
                 infected = self.list_students[contact].interact()
                 if infected:
