@@ -1,9 +1,8 @@
 import unittest
 
-from numpy import number
-
 from blackjack import blackjack_solution
 from translator import numbers_translation
+from simple_graphics import *
 
 
 def blackjack(card1, card2, dealer_card):
@@ -76,3 +75,23 @@ class TestTranslation(unittest.TestCase):
 
     def test_spanish_translate_9(self):
         self.assertEqual(numbers_translation["nine"], "nueve", '"nine" should map to "nueve"')
+
+
+class TestSimpleGraphics(unittest.TestCase):
+    def test_double_radius(self):
+        self.assertEqual(c.getRadius(), 20, "Radius should be double the original")
+
+    def test_upper_right(self):
+        center_point = c.getCenter()
+        self.assertGreater(center_point.getX(), 50, "Circle center should be on the right side")
+        self.assertLess(center_point.getY(), 50, "Circle center should be on the top half")
+
+    def test_yellow_fill(self):
+        self.assertEqual(c.getFill(), "yellow", "Circle fill should be yellow")
+
+    def test_purple_outline(self):
+        self.assertEqual(c.getOutline(), "purple", "Circle outline should be purple")
+
+
+if __name__ == "__main__":
+    unittest.main()
