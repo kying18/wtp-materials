@@ -23,10 +23,12 @@ def main():
         text = font.render(num_string, True, BLACK)
         cure = font.render('press \'c\' to cure a student', True, BLACK)
         beta = font.render('press \'b\' to cure a lower beta 10%', True, BLACK)
+        strong = font.render('press \'s\' to strengthen all students 10%', True, BLACK)
         rect = text.get_rect()
         screen.blit(text, (0, SCREENSIZE[1]-100), area=rect)
-        screen.blit(cure, (0, SCREENSIZE[1]-70))
-        screen.blit(beta, (0, SCREENSIZE[1] - 40))
+        screen.blit(cure, (0, SCREENSIZE[1]-75))
+        screen.blit(beta, (0, SCREENSIZE[1] - 50))
+        screen.blit(strong, (0, SCREENSIZE[1] - 25))
         for j in range(SCREENSIZE[1]//100-1):
             for i in range(SCREENSIZE[0]//100):
                 student_num = j*SCREENSIZE[0]//100+i
@@ -69,6 +71,8 @@ def checkEvents():
             if event.key == pygame.K_b:
                 school.lower_beta()
                 print(f'{school.beta}')
+            if event.key == pygame.K_s:
+                school.strengthen_students()
             school.infect_round()
             if school.can_continue():
                 num_rounds += 1
