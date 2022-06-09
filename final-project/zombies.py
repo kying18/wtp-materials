@@ -99,6 +99,9 @@ class School(object):
     #METHODS TO LOWER INFECTION RATES
     ###
     def cure_student(self):
+        '''
+        Turns a single student into a fully resistant robot
+        '''
         random_list = self.list_students.copy()
         random.shuffle(random_list)
         if self.get_num_infected() == 0:
@@ -114,6 +117,15 @@ class School(object):
         :return:
         '''
         self.beta = self.beta*0.8
+
+    def strengthen_students(self):
+        '''
+        Reduces the susceptibility of all students by 10%
+        '''
+        for student in self.list_students:
+            student.sus = 0.9*student.sus
+
+
 
 
 
