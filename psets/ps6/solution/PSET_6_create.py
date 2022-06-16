@@ -1,22 +1,26 @@
-#tests for PSET #6 Problem 1
+# tests for PSET #6 Problem 1
+
 import unittest
 import create as create
 import io
 import sys
 
+
 class TestClass(unittest.TestCase):
     def test_reg_list(self):
-        list = [0, 1, 2]
-        test = create.NewClass(list)
-        self.assertEqual(test.the_list, list, "The list should be accessible through any_object.the_list")
+        l = [0, 1, 2]
+        test = create.NewClass(l)
+        self.assertEqual(test.the_list, l, "The list should be accessible through any_object.the_list")
 
-    def test_none_list(self):
-        test = create.NewClass([])
-        self.assertEqual([], test.the_list, 'ensure the null input works too!')
+    def test_one_list(self):
+        l = [1]
+        test = create.NewClass(l)
+        self.assertEqual(test.the_list, l, 'ensure the null input works too!')
 
     def test_unsorted_list(self):
         test = create.NewClass([3, 7, 2])
         self.assertEqual([3, 7, 2], test.the_list, 'is your list autosorting?')
+
 
 class TestPrintParams(unittest.TestCase):
     def test_regular(self):
@@ -49,6 +53,7 @@ class TestAverages(unittest.TestCase):
         test_avg = objects.find_average()
         self.assertEqual(avg, test_avg, 'how do you handle a single input?')
 
+
 class TestMin(unittest.TestCase):
     def test_normal(self):
         x = [12, 5, 7, 0, 9]
@@ -79,6 +84,7 @@ class TestMax(unittest.TestCase):
         objects = create.NewClass(x)
         test_max = objects.find_max()
         self.assertEqual(maxi, test_max, 'how do you handle a single input?')
+
 
 if __name__ == '__main__':
     unittest.main()
