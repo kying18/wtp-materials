@@ -15,23 +15,23 @@ c.draw(win)
 
 # optional challenge a
 
-# win.getMouse()  # pause for click in window
-# c2 = Circle(Point(50, 50), 16)
-# c2.setFill('purple')
-# c2.setOutline('green')
-# c2.draw(win)
+win.getMouse()  # pause for click in window
+c2 = Circle(Point(50, 50), 16)
+c2.setFill('purple')
+c2.setOutline('green')
+c2.draw(win)
 
-# win.getMouse()  # pause for click in window
-# c3 = Circle(Point(50, 50), 12)
-# c3.setFill('green')
-# c3.setOutline('red')
-# c3.draw(win)
+win.getMouse()  # pause for click in window
+c3 = Circle(Point(50, 50), 12)
+c3.setFill('green')
+c3.setOutline('red')
+c3.draw(win)
 
-# win.getMouse()  # pause for click in window
-# c4 = Circle(Point(50, 50), 8)
-# c4.setFill('red')
-# c4.setOutline('blue')
-# c4.draw(win)
+win.getMouse()  # pause for click in window
+c4 = Circle(Point(50, 50), 8)
+c4.setFill('red')
+c4.setOutline('blue')
+c4.draw(win)
 
 # optional challenge b/c
 colors = ["red", "orange", "yellow", "green", "blue", "purple", "white", "black"]
