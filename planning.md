@@ -137,19 +137,19 @@ Agenda (Kylie out):
 
 OH: Oomi, Adeena
 
+#
+
+**NOTE: classes where students work on projects will all be OH style. We may not need to host OH after class? Maybe only 1 person (in bold)?**
+
+#
+
 ## 7/8 - Class 9
 
 Agenda (Kylie out):
 
 - Work on project
 
-OH: Gabby, Zoe
-
-#
-
-**NOTE: week 3 classes will all be OH style. We may not need to host OH after class.**
-
-#
+OH: Gabby, **Zoe**
 
 ## 7/11 - Class 10
 
@@ -157,7 +157,7 @@ Agenda:
 
 - Work on project
 
-OH: Kylie, Oomi
+OH: **Kylie**, Oomi\
 
 ## 7/12 - Class 11
 
@@ -165,7 +165,7 @@ Agenda:
 
 - Work on project
 
-OH: Gabby, Adeena
+OH: **Gabby**, Adeena
 
 ## 7/13 - Class 12
 
@@ -173,7 +173,7 @@ Agenda:
 
 - Work on project
 
-OH: Zoe, Oomi
+OH: Zoe, **Oomi**
 
 ## 7/14 - Class 13
 
@@ -181,7 +181,7 @@ Agenda:
 
 - Work on project
 
-OH: Kylie, Gabby, Adeena
+OH: Kylie, Gabby, **Adeena**
 
 ## 7/15 - Class 14 (Final Class)
 
