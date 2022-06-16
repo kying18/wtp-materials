@@ -139,7 +139,8 @@ OH: Oomi, Adeena
 
 #
 
-**NOTE: classes where students work on projects will all be OH style. We may not need to host OH after class? Maybe only 1 person (in bold)?**
+**NOTE: classes where students work on projects will all be OH style.**\
+**We may only need 1 person to host OH (see bolded names below)? May not need to host OH after class?**
 
 #
 
@@ -157,7 +158,7 @@ Agenda:
 
 - Work on project
 
-OH: **Kylie**, Oomi\
+OH: **Kylie**, Oomi
 
 ## 7/12 - Class 11
 
