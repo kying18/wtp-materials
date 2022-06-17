@@ -46,7 +46,7 @@ class TestAverages(unittest.TestCase):
         test_avg = objects.find_average()
         self.assertEqual(average, test_avg, 'your average test needs to be checked')
 
-    def test_none(self):
+    def test_one(self):
         x = [1]
         avg = sum(x)/len(x)
         objects = create.NewClass(x)
@@ -62,8 +62,15 @@ class TestMin(unittest.TestCase):
         test_min = objects.find_min()
         self.assertEqual(mini, test_min, 'your min test needs to be checked')
 
-    def test_none(self):
+    def test_one(self):
         x = [1]
+        mini = min(x)
+        objects = create.NewClass(x)
+        test_min = objects.find_min()
+        self.assertEqual(mini, test_min, 'how do you handle a single input?')
+
+    def test_negs(self):
+        x = [1, -1, 9, 3, 2]
         mini = min(x)
         objects = create.NewClass(x)
         test_min = objects.find_min()
@@ -78,8 +85,15 @@ class TestMax(unittest.TestCase):
         test_max = objects.find_max()
         self.assertEqual(maxi, test_max, 'your max test needs to be checked')
 
-    def test_none(self):
+    def test_one(self):
         x = [1]
+        maxi = max(x)
+        objects = create.NewClass(x)
+        test_max = objects.find_max()
+        self.assertEqual(maxi, test_max, 'how do you handle a single input?')
+
+    def test_negs(self):
+        x = [1, 3, -1, 2, -19, 20]
         maxi = max(x)
         objects = create.NewClass(x)
         test_max = objects.find_max()
