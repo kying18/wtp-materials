@@ -25,5 +25,11 @@ class TestShape(unittest.TestCase):
     pass
 
 
+# NOTE TO STUDENTS: this is for the optional question
+class TestPets(unittest.TestCase):
+    # TODO write tests for pets.py
+    pass
+
+
 if __name__ == "__main__":
     unittest.main()
