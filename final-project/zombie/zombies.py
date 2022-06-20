@@ -73,7 +73,6 @@ class School(object):
             #the underscore (_) is a python convention: when we don't use the VALUE of a term (like student in infected students)
             #we don't put a real term there, and it's just like a counter (equivalent to say for i in range(len(infected_students)
             for i in range(round(self.beta)):  # in this code, beta can be a float
-                print('infecting student', i, 'for beta', self.beta)
                 contact = random.randint(0, self.school_size-1)
                 infected = self.list_students[contact].interact()
                 if infected:
