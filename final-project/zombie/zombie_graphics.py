@@ -2,6 +2,7 @@ import sys
 import pygame
 import zombies as zombies
 
+
 SCREENSIZE = (900, 600)  # works for my laptop, should be changable
 BLACK = (0, 0, 0)
 GREY = (165, 182, 184)
@@ -25,11 +26,13 @@ def main():
         cure = font.render('press \'c\' to cure a student', True, BLACK)
         beta = font.render('press \'b\' to cure a lower beta 10%', True, BLACK)
         strong = font.render('press \'s\' to strengthen all students 10%', True, BLACK)
+        fast = font.render('press \'u\' to cure all students 10% faster', True, BLACK)
         rect = text.get_rect()
-        screen.blit(text, (0, SCREENSIZE[1]-100), area=rect)
-        screen.blit(cure, (0, SCREENSIZE[1]-75))
-        screen.blit(beta, (0, SCREENSIZE[1] - 50))
-        screen.blit(strong, (0, SCREENSIZE[1] - 25))
+        screen.blit(text, (0, SCREENSIZE[1]-90), area=rect)
+        screen.blit(cure, (0, SCREENSIZE[1]-65))
+        screen.blit(beta, (0, SCREENSIZE[1] - 40))
+        screen.blit(strong, (400, SCREENSIZE[1] - 65))
+        screen.blit(fast, (400, SCREENSIZE[1] - 40))
         for j in range(SCREENSIZE[1]//100-1):
             for i in range(SCREENSIZE[0]//100):
                 student_num = j*SCREENSIZE[0]//100+i
@@ -72,6 +75,8 @@ def checkEvents():
                 print(f'{school.beta}')
             if event.key == pygame.K_s:
                 school.strengthen_students()
+            if event.key == pygame.K_u:
+                school.shorten_cure_time()
             school.infect_round()
             if school.can_continue():
                 num_rounds += 1
