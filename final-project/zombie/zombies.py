@@ -1,4 +1,5 @@
 import random
+import numpy as np
 sus_range = (1, 1)  # tuple of low and high bounds for susceptibility
 
 
@@ -14,6 +15,8 @@ class Person(object):
         # equivalent to = random.uniform(sus_range[0], sus_range[1])
         self.state = state
         # this might seem silly but it's important so we bind that original state to each Student object
+        self.recovery_time = np.random.normal(10, 4.0)
+        self.num_rounds = 0
 
     def interact(self):
         '''
@@ -72,6 +75,10 @@ class School(object):
                 infected = self.list_students[contact].interact()
                 if infected:
                     self.list_students[contact].set_state('I')
+        for student in self.list_students:
+            student.num_rounds += 1
+            if student.num_rounds >= student.recovery_time:
+                student.set_state('R')
 
     def get_num_infected(self):
         '''
@@ -128,6 +135,13 @@ class School(object):
         '''
         for student in self.list_students:
             student.sus = 0.9*student.sus
+
+    def shorten_cure_time(self):
+        '''
+        Shortens the time to cure of all students by 10%
+        '''
+        for student in self.list_students:
+            student.recovery_time = 0.9*student.recovery_time
 
     def __str__(self):
         '''
