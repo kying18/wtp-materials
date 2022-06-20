@@ -1,6 +1,7 @@
 import random
 import numpy as np
-sus_range = (1, 1)  # tuple of low and high bounds for susceptibility
+resistance_range = (0, 0.5)  # tuple of low and high bounds for resistance
+cure_time = (10, 4) #the first value is the mean, then second is the 'mu' or standard deviation: ask a TA if you have any questions!
 
 
 class Person(object):
@@ -11,11 +12,11 @@ class Person(object):
         'S' = susceptible (human)
         'R' = recovered + immune (cured and incapable of becoming a zombie again)
         '''
-        self.sus = random.uniform(*sus_range)  # unpacking notation
+        self.resistance = random.uniform(*resistance_range)  # unpacking notation
         # equivalent to = random.uniform(sus_range[0], sus_range[1])
         self.state = state
         # this might seem silly but it's important so we bind that original state to each Student object
-        self.recovery_time = np.random.normal(10, 4.0)
+        self.recovery_time = np.random.normal(*cure_time)
         self.num_rounds = 0
 
     def interact(self):
@@ -26,7 +27,7 @@ class Person(object):
         if self.get_state() == 'R':
             return False
         strength = random.random()  # random value of infection strength
-        if 1-self.sus < strength:  # if student strength is less than virus strength, infected
+        if self.resistance < strength:  # if student strength is less than virus strength, infected
             return True
         return False
 
