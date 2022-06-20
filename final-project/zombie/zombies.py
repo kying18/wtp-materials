@@ -8,15 +8,16 @@ class Person(object):
     def __init__(self, state):
         '''
         Initial constructor of a person. Holds their susceptibility (float, range 0:1), and state.
-        'I' = infected (aka zombie)
         'S' = susceptible (human)
-        'R' = recovered + immune (cured and incapable of becoming a zombie again)
+        'I' = infected (aka zombie)
+        'R' = recovered + immune (cured and incapable of becoming a zombie again, represented by a robot)
         '''
         self.resistance = random.uniform(*resistance_range)  # unpacking notation
         # equivalent to = random.uniform(sus_range[0], sus_range[1])
         self.state = state
         # this might seem silly but it's important so we bind that original state to each Student object
         self.recovery_time = np.random.normal(*cure_time)
+        #uses a normal distribution based on the cure_time tuple above with the first value as the mean, second as the standard deviation
         self.num_rounds = 0
 
     def interact(self):
@@ -40,9 +41,8 @@ class Person(object):
 
     def set_state(self, state):
         '''
-        Sets the state given 'I', 'S', or 'R'
+        Sets the state given 'S', 'I', or 'R'
         '''
-        # assert state in ['S', 'I', 'R']  # do we want to cover assert statements?
         self.state = state
 
 
@@ -70,6 +70,8 @@ class School(object):
                 infected_students.append(student)
         # for each infected student, have them interact with some random subset of students
         for _ in infected_students:
+            #the underscore (_) is a python convention: when we don't use the VALUE of a term (like student in infected students)
+            #we don't put a real term there, and it's just like a counter (equivalent to say for i in range(len(infected_students)
             for i in range(round(self.beta)):  # in this code, beta can be a float
                 print('infecting student', i, 'for beta', self.beta)
                 contact = random.randint(0, self.school_size-1)
@@ -94,17 +96,17 @@ class School(object):
     def can_continue(self):
         if self.school_size == self.get_num_infected():
             return False
+            #if everyone is infected, game over
         robo_count = 0
         for student in self.list_students:
             if student.get_state() == 'R':
                 robo_count += 1
-                print(robo_count)
-                print('school size =', self.school_size)
         if robo_count == self.school_size:
-            print('returning false')
             return False
+            #if everyone is cured, game won
         else:
             return True
+            #otherwise keep playing
 
     ###
     # METHODS TO LOWER INFECTION RATES
@@ -156,10 +158,6 @@ class School(object):
             if (ix+1) % 15 == 0:  # line breaks every 15 students
                 string += '\n'
         return string
-
-    def __repr__(self):
-        for student in self.list_students:
-            print('Student', student.get_state())
 
 
 if __name__ == "__main__":
