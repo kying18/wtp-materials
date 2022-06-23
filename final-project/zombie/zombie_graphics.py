@@ -44,7 +44,7 @@ def main():
                 if state == 'R':
                     screen.blit(pygame.transform.scale(robot, (100, 100)), (100 * i, 100 * j))
 
-        if school.get_num_infected() == school.school_size:
+        if school.get_num_infected() == school.num_students:
             screen.blit(pygame.transform.scale(zombie, SCREENSIZE), (0, 0))
             lose = font.render('you lose!!', True, BLACK)
             lose_stats = font.render('you survived ' + str(num_rounds) + ' rounds', True, BLACK)
