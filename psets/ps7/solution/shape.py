@@ -72,23 +72,3 @@ class Triangle(Shape):
         #base*height/2
         return self.base*self.height/2
 
-# Test out your implementation
-rect=Rectangle(2,4)
-rect_area=rect.find_area()
-rect_perimeter=rect.find_perimeter()
-print(f'The area of a 2x4 rectangle is {rect_area} and the perimeter is {rect_perimeter}')
-
-square=Square(2)
-square_area=square.find_area()
-square_perimeter=square.find_perimeter()
-print(f'The area of a 2x2 square is {square_area} and the perimeter is {square_perimeter}')
-
-circle=Circle(4)
-circle_area=circle.find_area()
-circle_perimeter=circle.find_perimeter()
-print(f'The area of a circle with a radius of 4 is {circle_area} and the perimeter is {circle_perimeter}')
-
-
-triangle=Triangle(2,5)
-triangle_area=triangle.find_area()
-print(f'The area of a 2x5 triangle is {triangle_area}')
