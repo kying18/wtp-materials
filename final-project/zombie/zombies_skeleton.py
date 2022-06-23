@@ -93,21 +93,16 @@ class School(object):
         Returns number of zombie students as an integer
         '''
 
+    def get_num_immune(self):
+        '''
+        Returns number of immune/robot students as an integer
+        '''
 
     def can_continue(self):
-        if self.school_size == self.get_num_infected():
-            return False
-            #if everyone is infected, game over
-        robo_count = 0
-        for student in self.list_students:
-            if student.get_state() == 'R':
-                robo_count += 1
-        if robo_count == self.school_size:
-            return False
-            #if everyone is cured, game won
-        else:
-            return True
-            #otherwise keep playing
+       ##TO_DO
+        # returns false if every student is a robot
+        # returns false if every student is a zombie
+        #otherwise returns true
 
     ###
     # METHODS TO LOWER INFECTION RATES
