@@ -56,13 +56,16 @@ class School(object):
         '''
         Constructs a school given a number of students and the initial probability of infection.
         '''
-        self.beta = beta
-        self.list_students = []
+        ## TO_DO bind beta
+        ## TO_DO bind num_students
+        ## TO_DO initialize list_students as []
         for _ in range(num_students):
             # weighted choices, unpacking list
             rand_disease = random.choices(['S', 'I'], weights=[1-initial_spread, initial_spread])[0]
-            self.list_students.append(Person(rand_disease))
-        self.school_size = num_students
+            ## TO_DO add a student to list_students with the given rand_disease state
+            # Hint: a student is an instance of the Person classs
+
+
 
     def infect_round(self):
         '''
