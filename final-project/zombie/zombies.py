@@ -1,6 +1,6 @@
 import random
 import numpy as np
-resistance_range = (0, 0.5)  # tuple of low and high bounds for resistance
+strength_range = (0, 0.5)  # tuple of low and high bounds for resistance
 cure_time = (10, 4) #the first value is the mean, then second is the 'mu' or standard deviation: ask a TA if you have any questions!
 
 
@@ -12,7 +12,7 @@ class Person(object):
         'I' = infected (aka zombie)
         'R' = recovered + immune (cured and incapable of becoming a zombie again, represented by a robot)
         '''
-        self.resistance = random.uniform(*resistance_range)  # unpacking notation
+        self.strength = random.uniform(*strength_range)  # unpacking notation
         # equivalent to = random.uniform(sus_range[0], sus_range[1])
         self.state = state
         # this might seem silly but it's important so we bind that original state to each Student object
@@ -28,7 +28,7 @@ class Person(object):
         if self.get_state() == 'R':
             return False
         strength = random.random()  # random value of infection strength
-        if self.resistance < strength:  # if student strength is less than virus strength, infected
+        if self.strength < strength:  # if student strength is less than virus strength, infected
             return True
         return False
 
@@ -57,7 +57,7 @@ class School(object):
             # weighted choices, unpacking list
             rand_disease = random.choices(['S', 'I'], weights=[1-initial_spread, initial_spread])[0]
             self.list_students.append(Person(rand_disease))
-        self.school_size = num_students
+        self.num_students = num_students
 
     def infect_round(self):
         '''
@@ -73,7 +73,7 @@ class School(object):
             #the underscore (_) is a python convention: when we don't use the VALUE of a term (like student in infected students)
             #we don't put a real term there, and it's just like a counter (equivalent to say for i in range(len(infected_students)
             for i in range(round(self.beta)):  # in this code, beta can be a float
-                contact = random.randint(0, self.school_size-1)
+                contact = random.randint(0, self.num_students-1)
                 infected = self.list_students[contact].interact()
                 if infected:
                     self.list_students[contact].set_state('I')
@@ -93,14 +93,14 @@ class School(object):
         return count
 
     def can_continue(self):
-        if self.school_size == self.get_num_infected():
+        if self.num_students == self.get_num_infected():
             return False
             #if everyone is infected, game over
         robo_count = 0
         for student in self.list_students:
             if student.get_state() == 'R':
                 robo_count += 1
-        if robo_count == self.school_size:
+        if robo_count == self.num_students:
             return False
             #if everyone is cured, game won
         else:
