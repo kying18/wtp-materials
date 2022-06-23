@@ -78,7 +78,8 @@ class School(object):
                 if infected:
                     self.list_students[contact].set_state('I')
         for student in self.list_students:
-            student.num_rounds += 1
+            if student.get_state() == 'I':
+                student.num_rounds += 1
             if student.num_rounds >= student.recovery_time:
                 student.set_state('R')
 
