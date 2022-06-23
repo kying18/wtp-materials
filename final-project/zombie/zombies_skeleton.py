@@ -71,35 +71,28 @@ class School(object):
         '''
         Simulates a day of student interactions, controlled by the sociality variable 'BETA"
         '''
+        # TO_DO
         # generate a list of infected students
-        infected_students = []
-        for student in self.list_students:
-            if student.get_state() == 'I':
-                infected_students.append(student)
+
         # for each infected student, have them interact with some random subset of students
         for _ in infected_students:
             #the underscore (_) is a python convention: when we don't use the VALUE of a term (like student in infected students)
             #we don't put a real term there, and it's just like a counter (equivalent to say for i in range(len(infected_students)
             for i in range(round(self.beta)):  # in this code, beta can be a float
-                print('infecting student', i, 'for beta', self.beta)
                 contact = random.randint(0, self.school_size-1)
                 infected = self.list_students[contact].interact()
                 if infected:
                     self.list_students[contact].set_state('I')
-        for student in self.list_students:
-            student.num_rounds += 1
-            if student.num_rounds >= student.recovery_time:
-                student.set_state('R')
+        #TO_DO
+        #if a student is infected, increment their num rounds by one
+        #if a student's rounds are greater than their recovery time, have them recover
+
 
     def get_num_infected(self):
         '''
         Returns number of zombie students as an integer
         '''
-        count = 0
-        for student in self.list_students:
-            if student.get_state() == 'I':
-                count += 1
-        return count
+
 
     def can_continue(self):
         if self.school_size == self.get_num_infected():
