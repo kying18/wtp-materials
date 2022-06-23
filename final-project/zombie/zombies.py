@@ -93,15 +93,22 @@ class School(object):
                 count += 1
         return count
 
-    def can_continue(self):
-        if self.num_students == self.get_num_infected():
-            return False
-            #if everyone is infected, game over
+
+    def get_num_immune(self):
+        '''
+        Returns number of immune students as an integer
+        '''
         robo_count = 0
         for student in self.list_students:
             if student.get_state() == 'R':
                 robo_count += 1
-        if robo_count == self.num_students:
+        return robo_count
+
+    def can_continue(self):
+        if self.num_students == self.get_num_infected():
+            return False
+            #if everyone is infected, game over
+        if self.get_num_immune == self.num_students:
             return False
             #if everyone is cured, game won
         else:
