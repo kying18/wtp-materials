@@ -7,6 +7,7 @@ Agenda:
 - What is computer science?
 - Previous projects?
 - Programming vs language parallels
+- What is a checkoff?
 
 ## 6/26 - Orientation Day 2
 
@@ -140,7 +141,7 @@ OH: Oomi, Adeena
 #
 
 **NOTE: classes where students work on projects will all be OH style.**\
-**We may only need 1 person to host OH (see bolded names below)? May not need to host OH after class?**
+**We may only need 2 person to host OH (see bolded names below)? May not need to host OH after class?**
 
 #
 
@@ -150,7 +151,7 @@ Agenda (Kylie out):
 
 - Work on project
 
-OH: Gabby, **Zoe**
+OH: Gabby, Zoe
 
 ## 7/11 - Class 10
 
@@ -158,7 +159,7 @@ Agenda:
 
 - Work on project
 
-OH: **Kylie**, Oomi
+OH: Kylie, Oomi
 
 ## 7/12 - Class 11
 
@@ -166,7 +167,7 @@ Agenda:
 
 - Work on project
 
-OH: **Gabby**, Adeena
+OH: Gabby, Adeena
 
 ## 7/13 - Class 12
 
@@ -174,7 +175,7 @@ Agenda:
 
 - Work on project
 
-OH: Zoe, **Oomi**
+OH: Zoe, Oomi
 
 ## 7/14 - Class 13
 
@@ -182,10 +183,10 @@ Agenda:
 
 - Work on project
 
-OH: Kylie, Gabby, **Adeena**
+OH: Kylie, Gabby, Adeena
 
 ## 7/15 - Class 14 (Final Class)
 
 Agenda:
 
-- Students present their projects!
+- Students present their projects! (Idea: breakout rooms so different students hear projects different from theirs)
