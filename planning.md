@@ -8,6 +8,7 @@ Agenda:
 - Previous projects?
 - Programming vs language parallels
 - What is a checkoff?
+- Cold calling? Can popcorn to someone else?
 
 ## 6/26 - Orientation Day 2
 

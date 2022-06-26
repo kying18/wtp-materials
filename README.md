@@ -64,7 +64,7 @@ If you are having trouble with the homework, please ask the staff for help at of
 
 ## Office Hours
 
-The staff will hold office hours every weekday (except Friday) from 7:30-9:00pm unless otherwise announced. Come ask us questions about the course materials or get help with the homework. Please read through the problem set instructions and read over your notes first, so that we will better be able to help you with whatever you are having trouble with.
+The staff will hold office hours every weekday (except July 4th) from 8:30-9:30 PM EST unless otherwise announced. Come ask us questions about the course materials, get checkoffs, and get help with the homework. Please read through the problem set instructions and read over your notes first, so that we will better be able to help you with whatever you are having trouble with.
 
 ## Discord
 
