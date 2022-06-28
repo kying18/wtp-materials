@@ -8,27 +8,13 @@ These notes were adapted or copied verbatim from from [Adam Hartz](https://hz.mi
 
 So far, all of our programs have continued in a relatively straightforward manner: Python executed all of the statements in a program in exactly the order they were specified.
 
+![straightforward flow](../images/flow_1.png)
+
 However, when we program more complex functionality, we might need to check a certain condition and change behavior of the program according to the result of that condition. **Conditional statements** give us this ability.
-
-Let's go back to our example of a robot doing our homework. Perhaps we only want the robot to do our math homework if it is due tomorrow. In thise case, we would need to ask our robot to check whether or not the math homework is due tomorrow, and if it is, do the math homework, otherwise, proceed with all the other homework. The flowchart would look something like this:
-
-#### TODO flowchart
 
 ## `if` Statements
 
-We can capture the above example using an `if` statement:
-
-```
-# check if math homework is due tomorrow
-if math_due_tomorrow:
-    print("Doing math homework")
-print("Doing English homework")
-print("Doing history homework")
-print("Doing science homework")
-print("Doing programming homework")
-```
-
-Here's a more functional example using absolute value:
+In order to write useful programs, however, we almost always need the ability to check conditions and change the behavior of the program accordingly. _Conditional statements_ give us this ability. The simplest form is the `if` statement:
 
 ```
 # Absolute value
@@ -37,6 +23,8 @@ if x < 0:
 ```
 
 The boolean expression after `if` is called the **condition**. If it is true (i.e., if it evaluates to `True`), the indented statement (the body) runs. If not, nothing happens.
+
+![conditional flow](../images/flow_condition.png)
 
 We may have multiple statements in the body of the conditional statement. Any statements that have the indentation at the same level are part of the body, and all of them get executed if the conditional is true.
 
@@ -64,7 +52,11 @@ if x < 0:
 
 ## `if`-`else` Statements
 
-A second form of the `if` statement makes Python run one of multiple possible alternative pieces of code. In this structure, there are two possibilities and the condition determines which one runs. The syntax looks like this:
+A second form of the `if` statement makes Python run one of multiple possible alternative pieces of code. In this structure, there are two possibilities and the condition determines which one runs:
+
+![Alternative flow](../images/flow_alternative.png)
+
+The syntax looks like this:
 
 ```
 if x % 2 == 0:
@@ -97,7 +89,11 @@ Each condition is checked in order. If the first is false, the next is checked, 
 
 ## Nested Conditionals
 
-The branches of a conditional can contain any valid Python code. This means that a conditional could contain another conditional! Previously, when we compared `x` and `y`, we could have written code like this:
+The branches of a conditional can contain any valid Python code. This means that a conditional could contain another conditional!
+
+![Complicated flow](../images/flow_complicated.png)
+
+Previously, when we compared `x` and `y`, we could have written code like this:
 
 ```
 if x == y:
@@ -361,6 +357,24 @@ From my experience, here's some examples of use cases:
 - Lists: when I want a list of things. For example, if I am trying to implement poker, I might store a deck of playing cards as a list of tuples (ex: `[(2, 'spades'), (2, 'diamonds'), (3, 'spades'), ...]`)
 - Dictionaries: when I want to associate something with a label or create any type of mapping. Also good for creating counters. For example, if I am counting occurrence of words in a sentence (`{'the': 5, 'and': 2, 'seashore': 1, 'dolphin': 1, etc.}`) or mapping stock tickers to company names (`{'TSLA': 'Tesla', 'AAPL': 'Apple', 'GOOGL': 'Alphabet', 'FB': 'Meta', etc.}`)
 - Sets: when I want to keep track of values I've already encountered, or when I want to see how many unique values are in something
+
+# More About Strings
+
+There are a few more string operations that we can use:
+
+We can split a string by the whitespace (any number of spaces together, including tabs).
+
+```
+"hello i like pi".split() # ["hello", "i", "like", "pi]
+```
+
+We can also capitalize and lowercase characters:
+
+```
+'a'.upper() # A
+'abc'.upper() # ABC
+'HELLO'.lower() # hello
+```
 
 # Practice Questions
 

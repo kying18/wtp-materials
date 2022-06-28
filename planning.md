@@ -25,6 +25,7 @@ Agenda:
 
 Agenda:
 
+- Review game
 - Arithmetic, string, boolean operations
 - Variables
 - Comments
