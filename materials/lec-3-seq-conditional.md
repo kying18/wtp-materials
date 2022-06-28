@@ -24,7 +24,7 @@ if x < 0:
 
 The boolean expression after `if` is called the **condition**. If it is true (i.e., if it evaluates to `True`), the indented statement (the body) runs. If not, nothing happens.
 
-![conditional flow](../images/flow_condition.png)
+![conditional flow](../images/flow_conditional.png)
 
 We may have multiple statements in the body of the conditional statement. Any statements that have the indentation at the same level are part of the body, and all of them get executed if the conditional is true.
 
@@ -394,3 +394,5 @@ x = [1.1, 2, [3, 'tomato', 4], 'cat]
 10. What is the value of `[1, 2]+[3,4]*2`?
 11. What is the value of `['b'] + ['a' + 'n']*2 + ['a']`?
 12. What is the value of `"na"*8 + " batman"`?
+
+https://docs.google.com/forms/d/e/1FAIpQLSd60sRF6dkJy94kU5ymRuDJMj67WZhlDlKQSzCEe5ujOTmX9g/viewform

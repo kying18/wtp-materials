@@ -40,10 +40,14 @@ OH: Kylie, Oomi, Gabby
 
 Agenda:
 
+- 2 Truths, 1 Lie
+- Announcement:
+  1. Checkoff style changing so we can help people more
+  2. Post-class survey
 - Review game
 - Conditionals
 - Sequences
-- Fake hacking program
+- Rock, paper, scissors (Adeena)
 - Graphics overview
 
 HW 2: Oomi, Zoe\
@@ -61,7 +65,6 @@ Agenda:
 - Nested loops
 - `break`
 - Guess the number (Zoe)
-- Rock, paper, scissors (Adeena)
 
 HW 3: Adeena, Gabby\
 OH: Kylie, Zoe, Oomi
