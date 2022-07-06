@@ -119,7 +119,6 @@ Agenda:
   - Proposal should contain: a few sentences about project idea, and a numbered list of "tasks" that they would need to do for the project
 - Tic-Tac-Toe continued
 
-HW 6: Adeena, Zoe\
 OH: Kylie, Gabby, Oomi
 
 ## 7/6 - Class 7
@@ -131,7 +130,7 @@ Agenda:
 - Advanced topics
 
 Final project proposal (if applicable): Kylie\
-HW 7: Gabby, Oomi\
+HW 6: Gabby, Oomi\
 OH: Kylie, Adeena, Zoe (may not need tutors since no assignment)
 
 ## 7/7 - Class 8
@@ -141,6 +140,7 @@ Agenda (Kylie out):
 - Review session (Gabby)
 - Start on projects
 
+HW 7 : Gabby, Zoe
 OH: Oomi, Adeena
 
 #
