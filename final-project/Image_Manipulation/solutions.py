@@ -53,9 +53,9 @@ def scramble_image(image):
                         if counter_x>length*2-1:
                             counter_x=0
                             how_many+=1
-                        pixel=[image.array[i][z][m]]
-                        factor1=1.5*((s+1)/8)
-                        temp_Image.array[counter_x][counter_y][m]= brighten(pixels=pixel,factor=factor1)[0]
+                        pixel=image.array[i][z][m]
+                        temp_Image.array[counter_x][counter_y][m]= pixel
+
     return temp_Image
 
 
@@ -177,8 +177,37 @@ def create_a_border(image1,image2,start_pixls,dimension):
                         temp_Image.array[i][z][l]= image1.array[x][y][l]
     return temp_Image
 
+#OPTIONAL IMAGE TO CREATE ON LAST DAY
+#goal is to have an animal/person/object that wasn't originally there reflected on water
+# First step: Get image of object and invert it 
+
+#let's make life easier: get rid of any transparent space
 
 
+def reflecting_on_water(object_image, background_image, colors_to_keep,background_color):
+    temp_Image=Image(object_image.array.shape[0],object_image.array.shape[1],object_image.array.shape[2])
+    img = PIL.Image.open(object_image)
+    rgbimg = img.convert('RGB')
+    for i in range(object_image.array.shape[0]):
+            for z in range(object_image.array.shape[1]):
+                    color=rgbimg.getpixel(i,z)
+                    if color not in colors_to_keep:
+                        rgbimg[i,z]=background_color
+    
+    #now we can invert image!
+    rgbimg.save("input/filled.png", "PNG")
+    invert= invert_image("filled.png")
+    #image now needs to be blurred
+    blurred=blur(invert,5)
+    #now need to combine with lake image, but only the bottom!!
+    
+
+
+
+
+
+#now look at the area we add: if the background is not the character, we turn it to blend in with the scenery. 
+#so in the case of pikachu, it gets blurred if the color is not yellow, black, or red!
 
 #we want to flip the length of the lake, so looking for when blue starts and blue ends
 #img = PIL.Image.open("lake.png")
@@ -189,16 +218,23 @@ def create_a_border(image1,image2,start_pixls,dimension):
 #can check if background is transparent loll
 #modify invert: check if x and y pixel is between range that we go t earlier 
 #can ask the user input for this: what color are you looking for? (say RBG amount), 
-#give kerb mid piece hat
+
+
+
+
+
 
 if __name__ == '__main__':
-    lonk = Image(filename="test_images/city.png")
+   lonk1= Image(filename="test_images/city.png")
+   lonk2= Image(filename="pika.png")
 
  
    
-    test=apply_kernel(lonk,np.array([[1,2,1],[0,0,0],[-1,-2,-1]]))
+   #test=reflecting_on_water(lonk2,lonk1,[[255,216,35],[0,0,0],[234,78,35],[32,21,21],[180,59,64],[101,27,25]],[88,166,189])
 
-    test.write_image("edge_x.png")
+   #test.write_image("border.png")
+   hi=scramble_image(lonk1)
+   hi.write_image("huh.png")
 
 
 
