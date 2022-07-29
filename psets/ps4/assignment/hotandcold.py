@@ -16,11 +16,11 @@
 # depending on the value of that card as stated in cardcountvalue.py.
 
 # this is a list containing all of the valid values for a card
+
 cards = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
 
 # store the count as a variable named count. Fill in the
 # value it starts at here.
-count =  # TODO
 
 # Your code should loop and print the new count after every
 # time the user inputs a new card.

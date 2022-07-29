@@ -126,21 +126,22 @@ class School(object):
         Lowers the number of students each infected individual interacts with to 80% of current levels
         :return:
         '''
-        self.beta = self.beta*0.8
+        #TO_DO
+        #Only takes one line
 
     def strengthen_students(self):
         '''
         Reduces the susceptibility of all students by 10%
         '''
-        for student in self.list_students:
-            student.sus = 0.9*student.sus
+        #TO_DO
+        #We suggest iterating through all students
 
     def shorten_cure_time(self):
         '''
         Shortens the time to cure of all students by 10%
         '''
-        for student in self.list_students:
-            student.recovery_time = 0.9*student.recovery_time
+        #TO_DO
+        #We suggest iterating through all students
 
     def __str__(self):
         '''

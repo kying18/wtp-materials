@@ -1,29 +1,54 @@
+# hotandcold.py
+# Name:
+# Collaborators:
+
+# This program uses MIT card counting information to tell
+# the user when the current deck is hot (it's time to bet
+# big!) or cold (leave the table). It gets user input and
+# then keeps track of the MIT card counting score so far.
+# It should loop and keep asking you for cards until the
+# table becomes hot or cold.
+
+# Write some code that keeps track of the current count for
+# the cards that the user inputs.
+# Your count should start at 0 and either go up 1, down 1,
+# or remain the same every time the user inputs a card
+# depending on the value of that card as stated in cardcountvalue.py.
+
+# this is a list containing all of the valid values for a card
+
 cards = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
 
+# store the count as a variable named count. Fill in the
+# value it starts at here.
 count = 0
 
-while count < 5 and count > -5:
+# Your code should loop and print the new count after every
+# time the user inputs a new card.
 
-    current_card = input("What card was played: ")
-    print("")
-    if current_card not in cards:
-        while current_card not in cards:
-            current_card = input("That is not a valid card. Please enter a valid card: ")
-            print("")
+# start a loop here:
+while True:
 
-    one_values = cards[1:6]
-    zero_values = cards[6:9]
+    # in the loop, ask for user input (use code from pset3)
+    card = input("Your card: ")
 
-    if current_card in one_values:
-        count += 1
-    elif current_card in zero_values:
-        count = count
-    else:
-        count -= 1
-
+# in the loop, add the card counting value to the running total count
+# use code from pset3 to get the card counting vlaue
     if count >= 5:
-        print("Deck is hot!")
+        # indicate that we're hot
+        print("Deck is hot")
         break
-    if count <= -5:
-        print("Deck is cold :(")
+    elif count <= -5:
+        # indicate that we're cold
+        print("Deck is cold")
         break
+
+# in the loop, add some statements that check if the count
+# is >= 5 (hot) or <= -5 (cold). If the count ever gets hot
+# or cold, print a message saying the deck is hot/cold and
+# exit the loop.
+
+# NOTE: card counting isn't illegal but it IS effective, so
+# the casinos don't like to let their players do it! Make
+# sure to keep your current count secret (don't print it)
+# and only print a message when the deck gets hot or cold.
