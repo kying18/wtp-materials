@@ -2,9 +2,9 @@ from re import S
 from image import Image
 import numpy as np
 import random
-import PIL.Image
+#import PIL.Image
 
-
+#pip3 show numpy, then access from there, move you
 def brighten(image, factor):
     # when we brighten, we just want to make each channel higher by some amount 
     # factor is a value > 0, how much you want to brighten the image by (< 1 = darken, > 1 = brighten)
@@ -123,12 +123,14 @@ def apply_kernel(image, kernel):
                              x_kernel = x_2+neighbor_range
                              y_kernel = y_2+neighbor_range
                              value=kernel[x_kernel,y_kernel]
-                             if (x_2+i>0 and x_2+i<x_pixels) and (y_2+z>0 and y_2+z<y_pixels):
+                             if (x_2+i>=0 and x_2+i<x_pixels) and (y_2+z>=0 and y_2+z<y_pixels):
                                 total+=image.array[x_2+i,y_2+z,l]*value
                              else:
                                 continue
                     temp_Image.array[i,z,l]=total
         return temp_Image
+
+#immediately if x=0 then the y doesn't matter 
 
 def combine_images(image1, image2):
     temp_Image=Image(image1.array.shape[0],image1.array.shape[1],image1.array.shape[2])
@@ -177,66 +179,51 @@ def create_a_border(image1,image2,start_pixls,dimension):
                         temp_Image.array[i][z][l]= image1.array[x][y][l]
     return temp_Image
 
-#OPTIONAL IMAGE TO CREATE ON LAST DAY
-#goal is to have an animal/person/object that wasn't originally there reflected on water
-# First step: Get image of object and invert it 
 
-#let's make life easier: get rid of any transparent space
-
-
-def reflecting_on_water(object_image, background_image, colors_to_keep,background_color):
-    temp_Image=Image(object_image.array.shape[0],object_image.array.shape[1],object_image.array.shape[2])
-    img = PIL.Image.open(object_image)
-    rgbimg = img.convert('RGB')
-    for i in range(object_image.array.shape[0]):
-            for z in range(object_image.array.shape[1]):
-                    color=rgbimg.getpixel(i,z)
-                    if color not in colors_to_keep:
-                        rgbimg[i,z]=background_color
-    
+   
     #now we can invert image!
     rgbimg.save("input/filled.png", "PNG")
-    invert= invert_image("filled.png")
+    #invert= invert_image("filled.png")
     #image now needs to be blurred
-    blurred=blur(invert,5)
+    #blurred=blur(invert,5)
+    #blurred.write_image("test")
     #now need to combine with lake image, but only the bottom!!
+    """background_image=Image(background_image)
+    for i in range(400,400+blurred.shape[0]):
+        for y in range(blurred.shape[1]):
+            for d in range(0,blurred.shape[2]):
+                background_image[i][y][d]=blurred[i-400][y][d]
+
+    """
+
+def sepia_filter(image_file_name):
+    img = PIL.Image.open(image_file_name)
+    image = img.convert('RGB')
+    for i in range(image.size[0]):
+        for z in range(image.size[1]):
+                red=int((image.getpixel((i,z))[0] * .393) + (image.getpixel((i,z))[1] *.769) + (image.getpixel((i,z))[2] * .189))
+                green=int((image.getpixel((i,z))[0] * .349) + (image.getpixel((i,z))[1] *.686) + (image.getpixel((i,z))[2] * .168))
+                blue= int((image.getpixel((i,z))[0] * .272) + (image.getpixel((i,z))[1] *.534) + (image.getpixel((i,z))[2] * .131))
+                if red>255:
+                    red=255
+                if green>255:
+                    green=255
+                if blue>255:
+                    blue=255
+                image.putpixel((i,z),(red,green,blue))
     
-
-
-
-
-
-#now look at the area we add: if the background is not the character, we turn it to blend in with the scenery. 
-#so in the case of pikachu, it gets blurred if the color is not yellow, black, or red!
-
-#we want to flip the length of the lake, so looking for when blue starts and blue ends
-#img = PIL.Image.open("lake.png")
-#rgbimg = img.convert('RGB')
-#for i in range(5):
- #   print (rgbimg.getpixel((i, 0)))
-
-#can check if background is transparent loll
-#modify invert: check if x and y pixel is between range that we go t earlier 
-#can ask the user input for this: what color are you looking for? (say RBG amount), 
-
-
-
+    image.save("output/sepia_filter.png", "PNG")
 
 
 
 if __name__ == '__main__':
-   lonk1= Image(filename="test_images/city.png")
-   lonk2= Image(filename="pika.png")
-
+   lonk1= "input/pokemon.png"
+   lonk2= "input/pika.png"
  
-   
-   #test=reflecting_on_water(lonk2,lonk1,[[255,216,35],[0,0,0],[234,78,35],[32,21,21],[180,59,64],[101,27,25]],[88,166,189])
+   #hi=sepia_filter(lonk1)
+  # test=reflecting_on_water(lonk2,lonk1,[[255,216,35],[0,0,0],[234,78,35],[32,21,21],[180,59,64],[101,27,25]],[88,166,189])
+   # nature=Image(filename="lake.png")
+   #test=motion_blur(nature,13)
 
-   #test.write_image("border.png")
-   hi=scramble_image(lonk1)
-   hi.write_image("huh.png")
-
-
-
-
+   #test.write_image("blur.png")
 

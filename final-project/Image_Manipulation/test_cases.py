@@ -11,11 +11,6 @@ import cv2
 
 #The test_images folder should be inside input for this to work. Please don't move around the images!!
 
-#FOR TEST CASES YOU WILL NEED TO MAKE AN EDIT IN THE IMAGE.PY FILE:
-#Make self.output_path = 'input/test_images/'
-#Once you are done testing the files please change it back to self.output_path = 'output'
-#this will make sure your files will end up where they're supposed to :))
-
 
 
 class Test_Image_Manipulation(unittest.TestCase):
@@ -80,7 +75,7 @@ class Test_Image_Manipulation(unittest.TestCase):
         image.write_image("low_contrast_function.png")
         
         test = cv2.imread("input/test_images/low_contrast.png")
-        students = cv2.imread("output/test_images/low_contrast_function.png")
+        students = cv2.imread("output/low_contrast_function.png")
         
         if not (test.shape == students.shape):
             student_answer=3
